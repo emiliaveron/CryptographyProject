@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f83c07d-3d0c-443f-8657-baa5814e64e1" name="Changes" comment="" />
+    <list default="true" id="1114a8e8-fdb2-4f7d-b30f-34ae973d26d2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptography/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptography/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptography/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptography/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptography/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptography/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptography/Cryptography.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptography/client/client.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptography/client/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptography/database/database.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptography/database/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptography/encryption/encryption.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptography/encryption/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptography/server/server.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptography/server/src/Main.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +31,7 @@
   "customColor": "",
   "associatedIndex": 8
 }]]></component>
-  <component name="ProjectId" id="2g6YG46vrZQ5UMWgmqSgMKfia9Z" />
+  <component name="ProjectId" id="2g6gVpvfUf4pr0P2IoZetXcfvUT" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -22,7 +39,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "server",
     "kotlin-language-version-configured": "true",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
@@ -39,12 +56,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0f83c07d-3d0c-443f-8657-baa5814e64e1" name="Changes" comment="" />
-      <created>1715019399264</created>
+      <changelist id="1114a8e8-fdb2-4f7d-b30f-34ae973d26d2" name="Changes" comment="" />
+      <created>1715023471188</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1715019399264</updated>
-      <workItem from="1715019400467" duration="41000" />
+      <updated>1715023471188</updated>
+      <workItem from="1715023471229" duration="35000" />
     </task>
     <servers />
   </component>
