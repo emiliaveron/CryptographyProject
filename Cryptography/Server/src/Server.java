@@ -4,13 +4,12 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Main {
+public class Server {
     private static final int PORT = 8080;
     private static final Map<String, Socket> users = new HashMap<>();
 
     public static void main(String[] args) {
-        try {
-            ServerSocket serverSocket = new ServerSocket(PORT);
+        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             System.out.println("Chat server started on port " + PORT);
 
             while (true) {
@@ -24,7 +23,7 @@ public class Main {
     }
 
     private static class ClientHandler implements Runnable {
-        private Socket socket;
+        private final Socket socket;
 
         public ClientHandler(Socket socket) {
             this.socket = socket;
@@ -52,7 +51,11 @@ public class Main {
             } finally {
                 // Remove user when disconnected
                 synchronized (users) {
-                    users.remove(getUserIdFromUrl(socket));
+                    try {
+                        users.remove(getUserIdFromUrl(socket));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }

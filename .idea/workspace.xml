@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="1114a8e8-fdb2-4f7d-b30f-34ae973d26d2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cryptography/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptography/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cryptography/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cryptography/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cryptography/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cryptography/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cryptography/Cryptography.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cryptography/client/client.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cryptography/client/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cryptography/database/database.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cryptography/database/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cryptography/encryption/encryption.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cryptography/encryption/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cryptography/server/server.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cryptography/server/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/CryptographyProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CryptographyProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptography/client/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptography/client/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptography/server/server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptography/Server/server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptography/server/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptography/Server/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,10 +20,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 8
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
 }]]></component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2g6gVpvfUf4pr0P2IoZetXcfvUT" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -38,18 +37,27 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "server",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Pavel/Documents/GitHub/CryptographyProject",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
       </set>
     </attachedChunks>
   </component>
@@ -62,6 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1715023471188</updated>
       <workItem from="1715023471229" duration="35000" />
+      <workItem from="1715023921590" duration="1100000" />
     </task>
     <servers />
   </component>
