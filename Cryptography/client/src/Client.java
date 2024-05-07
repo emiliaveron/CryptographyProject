@@ -24,25 +24,33 @@ public class Client {
                 choice = userInput.readLine();
             }
 
-            System.out.println("Enter a username:");
-            String username = userInput.readLine();
-            while (username.isEmpty()) {
-                System.out.println("Username cannot be empty. Enter a username:");
-                username = userInput.readLine();
-            }
-            System.out.println("Enter a password:");
-            String password = userInput.readLine();
-            while (password.isEmpty()) {
-                System.out.println("Password cannot be empty. Enter a password:");
-                password = userInput.readLine();
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+            boolean success;
+            if (choice.equals("1")) {
+                success = handleRegistration(userInput, out, in);
+            } else {
+                success = handleLogin(userInput, out, in);
             }
 
-            // Send choice to the server
-            if (choice.equals("1")) {
-                out.println("/register " + username + " " + password);
-            } else {
-                out.println("/login " + username + " " + password);
+            if (!success) {
+                System.out.println("Failed to register or login. Exiting...");
+                return;
             }
+
+            System.out.println("Successfully logged in. Choose the user you want to chat with:");
+            String recipient = userInput.readLine();
+
+            out.println("/connect " + recipient);
+            String serverResponse = in.readLine();
+            while (!serverResponse.equals("Success")) {
+                System.out.println("User not found. Choose the user you want to chat with:");
+                recipient = userInput.readLine();
+                out.println("/connect " + recipient);
+                serverResponse = in.readLine();
+            }
+
+            System.out.println("Connected to " + recipient + ". Start chatting!");
 
             // Start a thread to handle messages from the server
             Thread messageThread = new Thread(new MessageHandler(socket));
@@ -80,5 +88,57 @@ public class Client {
                 e.printStackTrace();
             }
         }
+    }
+
+    private static String readUsername(BufferedReader userInput) throws IOException {
+        System.out.println("Enter a username:");
+        String username = userInput.readLine();
+        while (username.isEmpty()) {
+            System.out.println("Username cannot be empty. Enter a username:");
+            username = userInput.readLine();
+        }
+        return username;
+    }
+
+    private static String readPassword(BufferedReader userInput) throws IOException {
+        System.out.println("Enter a password:");
+        String password = userInput.readLine();
+        while (password.isEmpty()) {
+            System.out.println("Password cannot be empty. Enter a password:");
+            password = userInput.readLine();
+        }
+        return password;
+    }
+
+    private static boolean handleRegistration(BufferedReader userInput, PrintWriter out, BufferedReader in) throws IOException {
+        String username = readUsername(userInput);
+        String password = readPassword(userInput);
+        out.println("/register " + username + " " + password);
+        String serverResponse = in.readLine();
+        while (serverResponse.equals("Username already exists")) {
+            System.out.println("Username already exists. Enter a different username:");
+            username = readUsername(userInput);
+            out.println("/register " + username + " " + password);
+            serverResponse = in.readLine();
+        }
+
+        return serverResponse.equals("Registration successful");
+    }
+
+    private static boolean handleLogin(BufferedReader userInput, PrintWriter out, BufferedReader in) throws IOException {
+        String username = readUsername(userInput);
+        String password = readPassword(userInput);
+        out.println("/login " + username + " " + password);
+        String serverResponse = in.readLine();
+        while (serverResponse.equals("Invalid username or password")) {
+            System.out.println("Invalid username or password. Enter an username:");
+            username = readUsername(userInput);
+            System.out.println("Enter a password:");
+            password = readPassword(userInput);
+            out.println("/login " + username + " " + password);
+            serverResponse = in.readLine();
+        }
+
+        return serverResponse.equals("Login successful");
     }
 }
