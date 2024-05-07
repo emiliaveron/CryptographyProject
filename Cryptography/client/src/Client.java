@@ -38,7 +38,10 @@ public class Client {
                 return;
             }
 
-            System.out.println("Successfully logged in. Choose the user you want to chat with:");
+            System.out.println("Successfully logged in. Choose the user you want to chat with from the list:");
+            out.println("/list");
+            String userList = in.readLine();
+            System.out.println(userList);
             String recipient = userInput.readLine();
 
             out.println("/connect " + recipient);

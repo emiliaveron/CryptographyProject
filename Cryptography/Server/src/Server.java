@@ -4,6 +4,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Server {
     private static final int PORT = 8000;
@@ -80,9 +81,20 @@ public class Server {
                         String[] parts = message.split(" ", 2);
                         String recipient = parts[1];
 
+                        if (Objects.equals(connectedUsers.get(recipient), socket.getInetAddress().getHostAddress())) {
+                            out.println("Error: Cannot connect to yourself");
+                        }
+
                         // Connect the user to the chosen recipient
                     } else if (message.startsWith(("/message"))) {
 
+                    } else if (message.startsWith("/list")) {
+                        // Send the list of connected users to the client
+                        StringBuilder userList = new StringBuilder();
+                        for (String username : connectedUsers.keySet()) {
+                            userList.append(username).append("\n");
+                        }
+                        out.println(userList.toString());
                     } else {
                         System.out.println("Unknown command: " + message);
                     }
