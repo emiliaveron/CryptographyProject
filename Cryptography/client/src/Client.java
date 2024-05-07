@@ -6,7 +6,7 @@ import java.net.Socket;
 
 public class Client {
     private static final String SERVER_ADDRESS = "localhost";
-    private static final int SERVER_PORT = 8080;
+    private static final int SERVER_PORT = 8000;
 
     public static void main(String[] args) {
         try {
@@ -16,12 +16,33 @@ public class Client {
             BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
-            // Ask for user ID
-            System.out.print("Enter your user ID: ");
-            String userId = userInput.readLine();
+            // Show register or login prompt
+            System.out.println("Enter 1 to register or 2 to login:");
+            String choice = userInput.readLine();
+            while (!choice.equals("1") && !choice.equals("2")) {
+                System.out.println("Invalid choice. Enter 1 to register or 2 to login:");
+                choice = userInput.readLine();
+            }
 
-            // Send user ID to the server
-            out.println(userId);
+            System.out.println("Enter a username:");
+            String username = userInput.readLine();
+            while (username.isEmpty()) {
+                System.out.println("Username cannot be empty. Enter a username:");
+                username = userInput.readLine();
+            }
+            System.out.println("Enter a password:");
+            String password = userInput.readLine();
+            while (password.isEmpty()) {
+                System.out.println("Password cannot be empty. Enter a password:");
+                password = userInput.readLine();
+            }
+
+            // Send choice to the server
+            if (choice.equals("1")) {
+                out.println("/register " + username + " " + password);
+            } else {
+                out.println("/login " + username + " " + password);
+            }
 
             // Start a thread to handle messages from the server
             Thread messageThread = new Thread(new MessageHandler(socket));

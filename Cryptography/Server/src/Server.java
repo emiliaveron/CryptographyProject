@@ -43,8 +43,51 @@ public class Server {
 
                 // Handle messages from this user
                 while (true) {
-                    // Receive message
-                    // Process the message or forward it to the other user
+                    // Read message from the user
+                    byte[] buffer = new byte[1024];
+                    int bytesRead = socket.getInputStream().read(buffer);
+                    if (bytesRead == -1) {
+                        break;
+                    }
+
+                    // Convert the message to a string
+                    String message = new String(buffer, 0, bytesRead);
+
+                    if (message.startsWith("/register")) {
+                        // Extract the username and password
+                        String[] parts = message.split(" ", 3);
+                        String username = parts[1];
+                        String password = parts[2];
+
+                        // Register the user in the database
+                    } else if (message.startsWith(("/login"))) {
+                        // Extract the username and password
+                        String[] parts = message.split(" ", 3);
+                        String username = parts[1];
+                        String password = parts[2];
+
+                        // Check if the user is in the database
+                    } else if (message.startsWith("/send")) {
+                        // Extract the recipient ID and message
+                        String[] parts = message.split(" ", 3);
+                        String recipientId = parts[1];
+                        String messageToSend = parts[2];
+
+                        // Find the recipient in the map
+                        Socket recipientSocket;
+                        synchronized (users) {
+                            recipientSocket = users.get(recipientId);
+                        }
+
+                        // Send the message to the recipient
+                        if (recipientSocket != null) {
+                            recipientSocket.getOutputStream().write(messageToSend.getBytes());
+                        } else {
+                            System.out.println("User not found: " + recipientId);
+                        }
+                    } else {
+                        System.out.println("Unknown command: " + message);
+                    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
