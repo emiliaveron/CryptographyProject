@@ -115,6 +115,7 @@ public class Client {
         String password = readPassword(userInput);
         out.println("/register " + username + " " + password);
         String serverResponse = in.readLine();
+        System.out.println(serverResponse);
         while (serverResponse.equals("Username already exists")) {
             System.out.println("Username already exists. Enter a different username:");
             username = readUsername(userInput);
@@ -122,7 +123,7 @@ public class Client {
             serverResponse = in.readLine();
         }
 
-        return serverResponse.equals("Registration successful");
+        return serverResponse.equals("Success");
     }
 
     private static boolean handleLogin(BufferedReader userInput, PrintWriter out, BufferedReader in) throws IOException {
@@ -139,6 +140,6 @@ public class Client {
             serverResponse = in.readLine();
         }
 
-        return serverResponse.equals("Login successful");
+        return serverResponse.equals("Success");
     }
 }
