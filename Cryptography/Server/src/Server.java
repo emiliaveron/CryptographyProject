@@ -3,6 +3,9 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 public class Server {
@@ -34,17 +37,13 @@ public class Server {
         }
 
         public static List<Integer> castToList(String input) {
-            String[] elements = input.substring(1, input.length() - 1).split(", ");
-            List<Integer> result = new ArrayList<>(elements.length);
-            for (String item : elements) {
-                result.add(Integer.valueOf(item));
+            List<Integer> result = new ArrayList<>();
+            Pattern pattern = Pattern.compile("\\d+");
+            Matcher matcher = pattern.matcher(input);
+            while (matcher.find()) {
+                result.add(Integer.valueOf(matcher.group()));
             }
             return result;
-        }
-
-        private Integer generateRandomEncryptedNumber(List<Integer> publicKey){
-            Random r = new Random();
-            return RSA.encrypt(r.nextInt(26), publicKey);
         }
 
         @Override
@@ -110,7 +109,7 @@ public class Server {
                     } else if (message.startsWith("/connect")) {
                         // Extract the recipient
                         String[] parts = message.split(" ", 2);
-                        String recipient = parts[1];
+                        String recipient = parts[1].replace("\n", "").replace("\r", "");
 
                         // Check if the recipient is the user
                         if (recipient.equals(user.username)) {
@@ -118,16 +117,6 @@ public class Server {
                             System.out.println("Same user");
                             continue;
                         }
-
-                        // list all users
-                        StringBuilder userList = new StringBuilder();
-                        for (User user : connectedUsers) {
-                            if (Objects.equals(user.username, this.user.username)) {
-                                continue;
-                            }
-                            userList.append(user.username).append("\n");
-                        }
-                        System.out.println(userList.toString());
 
                         User recipientUser = connectedUsers.stream()
                                 .filter(u -> u.username.equals(recipient))
@@ -137,9 +126,16 @@ public class Server {
                             System.out.println("User not found.");
                             out.println("User not found.");
                         } else {
-                            user.setConnectedUser(recipientUser);
+                            boolean ready = user.setConnectedUser(recipientUser);
                             out.println("Found");
                             System.out.println(user.username + " connected to " + recipient);
+                            if (ready) {
+                                PrintWriter recipientOut = new PrintWriter(recipientUser.socket.getOutputStream(), true);
+                                Random random = new Random();
+                                int shift = random.nextInt(25) + 1;
+                                recipientOut.println("Success " + RSA.encrypt(shift, castToList(recipientUser.publicKey)));
+                                out.println("Success " + RSA.encrypt(shift, castToList(user.publicKey)));
+                            }
                         }
                     } else if (message.startsWith(("/message"))) {
                         // Extract the message
@@ -158,7 +154,7 @@ public class Server {
                             }
                             userList.append(user.username).append("\n");
                         }
-                        out.println(userList.toString());
+                        out.println(userList.append("END"));
                     } else {
                         System.out.println("Unknown command: " + message);
                     }

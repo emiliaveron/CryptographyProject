@@ -3,6 +3,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,8 +47,15 @@ public class Client {
 
             System.out.println("Successfully logged in. Choose the user you want to chat with from the list:");
             out.println("/list");
-            String userList = in.readLine();
-            System.out.println(userList);
+            List<String> userLines = new ArrayList<>();
+            String line;
+            while ((line = in.readLine()) != null && !line.equals("END")) {
+                userLines.add(line);
+            }
+
+            for (String userLine : userLines) {
+                System.out.println(userLine);
+            }
             String recipient = userInput.readLine();
 
             out.println("/connect " + recipient);
@@ -71,11 +81,13 @@ public class Client {
             messageThread.start();
 
             // Read user input and send messages to the server
+            System.out.println("the shift is: " + shift);
             CaesarCipher caesarCipher = new CaesarCipher(shift);
             String message;
             while ((message = userInput.readLine()) != null) {
                 String encryptedMessage = caesarCipher.encrypt(message);
-                out.println(encryptedMessage);
+                System.out.println("encrypted message: " + encryptedMessage + " message: " + message);
+                out.println("/message " + encryptedMessage);
             }
         } catch (IOException e) {
             logger.error("Error in client", e);

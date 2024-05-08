@@ -5,31 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/ch_qos_logback_classic.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/slf4j_api.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/xerial_sqlite_jdbc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drivers/sqlite-jdbc-3.45.3.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cryptography.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptography.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Server/server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/client/client.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/database.iml" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption/encryption.iml" beforeDir="false" afterPath="$PROJECT_DIR$/encryption/encryption.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/User.java" afterDir="false" />
     </list>
-    <list id="4d5dbad0-c06f-41fc-8e6e-76f975254298" name="Changes by Ayan" comment="">
-      <change beforePath="$PROJECT_DIR$/client/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Client.java" afterDir="false" />
-    </list>
-    <list id="182d66d5-0a39-4af4-8939-8fe85e629547" name="Changes by emiliaveron" comment="">
-      <change beforePath="$PROJECT_DIR$/Server/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Client.java" afterDir="false" />
-    </list>
-    <list id="700f465c-267f-4553-9623-b1b963878299" name="Changes by shafarida" comment="">
-      <change beforePath="$PROJECT_DIR$/Server/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server.java" afterDir="false" />
-    </list>
+    <list id="4d5dbad0-c06f-41fc-8e6e-76f975254298" name="Changes by Ayan" comment="" />
+    <list id="182d66d5-0a39-4af4-8939-8fe85e629547" name="Changes by emiliaveron" comment="" />
+    <list id="700f465c-267f-4553-9623-b1b963878299" name="Changes by shafarida" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,60 +28,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/Client/src/Client.java">
-      <ranges>
-        <range start1="5" end1="5" start2="5" end2="7" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="7" end1="7" start2="9" end2="10" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="9" end1="9" start2="12" end2="13" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="48" end1="49" start2="52" end2="53" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="54" end1="55" start2="58" end2="63" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="56" end1="56" start2="64" end2="67" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="58" end1="59" start2="69" end2="70" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="62" end1="62" start2="73" end2="74" changelist="4d5dbad0-c06f-41fc-8e6e-76f975254298" />
-        <range start1="64" end1="65" start2="76" end2="78" changelist="4d5dbad0-c06f-41fc-8e6e-76f975254298" />
-        <range start1="66" end1="67" start2="79" end2="79" changelist="4d5dbad0-c06f-41fc-8e6e-76f975254298" />
-        <range start1="68" end1="69" start2="80" end2="81" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="73" end1="74" start2="85" end2="87" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="75" end1="76" start2="88" end2="89" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="77" end1="77" start2="90" end2="91" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="85" end1="85" start2="99" end2="100" changelist="4d5dbad0-c06f-41fc-8e6e-76f975254298" />
-        <range start1="86" end1="87" start2="101" end2="103" changelist="4d5dbad0-c06f-41fc-8e6e-76f975254298" />
-        <range start1="90" end1="91" start2="106" end2="107" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="118" end1="119" start2="134" end2="135" changelist="182d66d5-0a39-4af4-8939-8fe85e629547" />
-        <range start1="124" end1="125" start2="140" end2="141" changelist="182d66d5-0a39-4af4-8939-8fe85e629547" />
-        <range start1="134" end1="135" start2="150" end2="151" changelist="182d66d5-0a39-4af4-8939-8fe85e629547" />
-        <range start1="141" end1="142" start2="157" end2="158" changelist="182d66d5-0a39-4af4-8939-8fe85e629547" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/Server/src/Server.java">
-      <ranges>
-        <range start1="4" end1="8" start2="4" end2="7" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="9" end1="9" start2="8" end2="9" changelist="700f465c-267f-4553-9623-b1b963878299" />
-        <range start1="10" end1="12" start2="10" end2="12" changelist="182d66d5-0a39-4af4-8939-8fe85e629547" />
-        <range start1="24" end1="25" start2="24" end2="25" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="30" end1="31" start2="30" end2="31" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="33" end1="33" start2="33" end2="47" changelist="182d66d5-0a39-4af4-8939-8fe85e629547" />
-        <range start1="54" end1="55" start2="68" end2="69" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="57" end1="57" start2="71" end2="72" changelist="182d66d5-0a39-4af4-8939-8fe85e629547" />
-        <range start1="58" end1="59" start2="73" end2="77" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="60" end1="61" start2="78" end2="80" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="62" end1="63" start2="81" end2="84" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="67" end1="68" start2="88" end2="89" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="70" end1="70" start2="91" end2="92" changelist="700f465c-267f-4553-9623-b1b963878299" />
-        <range start1="71" end1="72" start2="93" end2="102" changelist="700f465c-267f-4553-9623-b1b963878299" />
-        <range start1="73" end1="74" start2="103" end2="103" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="75" end1="77" start2="104" end2="108" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="83" end1="85" start2="114" end2="119" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="87" end1="88" start2="121" end2="143" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="89" end1="89" start2="144" end2="147" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="90" end1="90" start2="148" end2="151" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="93" end1="95" start2="154" end2="159" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="102" end1="103" start2="166" end2="167" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-        <range start1="105" end1="105" start2="169" end2="170" changelist="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" />
-      </ranges>
-    </file>
-  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 1
@@ -108,46 +37,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Client 1.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Client 2.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Client.executor&quot;: &quot;Run&quot;,
-    &quot;Application.DatabaseConstructor.executor&quot;: &quot;Run&quot;,
-    &quot;Application.RSA.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Server.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;server&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/Documents/GitHub/CryptographyProject/Cryptography/drivers/sqlite-jdbc-3.45.3.0.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Client 1.executor": "Run",
+    "Application.Client 2.executor": "Run",
+    "Application.Client.executor": "Run",
+    "Application.DatabaseConstructor.executor": "Run",
+    "Application.RSA.executor": "Run",
+    "Application.Server.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "server",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Admin/Documents/GitHub/CryptographyProject/Cryptography/drivers/sqlite-jdbc-3.45.3.0.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;sqlite&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\Documents\GitHub\CryptographyProject\Cryptography\drivers" />
       <recent name="C:\Users\Admin\Documents\GitHub\CryptographyProject\Cryptography\Encryption\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client 2">
+  <component name="RunManager" selected="Application.Server">
     <configuration name="Client 1" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -221,6 +151,7 @@
       <updated>1715023508366</updated>
       <workItem from="1715023509441" duration="117000" />
       <workItem from="1715064901989" duration="27778000" />
+      <workItem from="1715187946990" duration="5894000" />
     </task>
     <servers />
   </component>

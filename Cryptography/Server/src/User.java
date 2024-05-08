@@ -14,8 +14,9 @@ public class User {
         this.publicKey = publicKey;
     }
 
-    public void setConnectedUser(User connectedUser) {
+    public boolean setConnectedUser(User connectedUser) {
         this.connectedUser = connectedUser;
         this.isConnected = true;
+        return connectedUser.isConnected;
     }
 }
