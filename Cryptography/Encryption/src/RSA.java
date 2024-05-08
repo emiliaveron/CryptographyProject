@@ -11,9 +11,8 @@ public class RSA {
         int p = primes.get(getRandomIndex(primes.size()));
         int q = primes.get(getRandomIndex(primes.size()));
 
-        this.publicKey = generatePublicKey(p, q);
-        int e = publicKey.get(0);
-        this.privateKey = generatePrivateKey(p, q, e);
+        this.publicKey = generateKeys(p, q).get(0);
+        this.privateKey = generateKeys(p, q).get(1);
     }
 
     private int getRandomIndex(int max) {
@@ -38,28 +37,39 @@ public class RSA {
         return primes;
     }
 
-    public static List<Integer> generatePublicKey(int p, int q) {
+    public static List<List<Integer>> generateKeys(int p, int q) {
         int n = p * q;
-        List<Integer> public_key = new ArrayList<>();
+        int phi = (p-1) * (q-1);
+
         int e = 2;
-        while (gcd(e, (p - 1) * (q - 1)) != 1) {
-            e++;
+        while (true){
+            if (gcd(e,phi) == 1){
+                break;
+            }
+            e += 1;
         }
+
+        int d = 2;
+        while (true){
+            if ((d*e)%phi == 1){
+                break;
+            }
+            d += 1;
+        }
+
+        List<Integer> public_key = new ArrayList<>();
         public_key.add(e);
         public_key.add(n);
-        return public_key;
-    }
 
-    public static List<Integer> generatePrivateKey(int p, int q, int e) {
-        int n = p * q;
         List<Integer> private_key = new ArrayList<>();
-        int d = 2;
-        while ((d * e) % ((p - 1) * (q - 1)) != 1) {
-            d++;
-        }
         private_key.add(d);
         private_key.add(n);
-        return private_key;
+
+        List<List<Integer>> keys = new ArrayList<>();
+        keys.add(public_key);
+        keys.add(private_key);
+
+        return keys;
     }
 
     public static int gcd(int a, int b) {
