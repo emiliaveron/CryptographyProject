@@ -2,14 +2,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-
+import java.util.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 public class Server {
+    private static final Logger logger = LoggerFactory.getLogger(Server.class);
     private static final int PORT = 8000;
-
-    private static Map<String, String> connectedUsers = new HashMap<>();
+    private static final Vector<User> connectedUsers = new Vector<User>();
+    private static final DatabaseHandler db = new DatabaseHandler("users.db");
 
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
@@ -22,15 +22,29 @@ public class Server {
                 clientThread.start();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Server exception", e);
         }
     }
 
     private static class ClientHandler implements Runnable {
         private final Socket socket;
-
+        private User user;
         public ClientHandler(Socket socket) {
             this.socket = socket;
+        }
+
+        public static List<Integer> castToList(String input) {
+            String[] elements = input.substring(1, input.length() - 1).split(", ");
+            List<Integer> result = new ArrayList<>(elements.length);
+            for (String item : elements) {
+                result.add(Integer.valueOf(item));
+            }
+            return result;
+        }
+
+        private Integer generateRandomEncryptedNumber(List<Integer> publicKey){
+            Random r = new Random();
+            return RSA.encrypt(r.nextInt(26), publicKey);
         }
 
         @Override
@@ -52,47 +66,97 @@ public class Server {
 
                     if (message.startsWith("/register")) {
                         // Extract the username and password
-                        String[] parts = message.split(" ", 3);
+                        String[] parts = message.split(" ", 4);
                         String username = parts[1];
                         String password = parts[2];
+                        String publicKey = parts[3];
 
-                        // Register the user in the database
+                         if (db.userExists(username)) {
+                            out.println("User already exists.");
+                            continue;
+                        }
 
-                        // after success
+                         db.insertUser(username, password);
+
                         // Add the user to the connected users map
-                        connectedUsers.put(username, socket.getInetAddress().getHostAddress());
+                        User user = new User(username, socket, publicKey);
+                        connectedUsers.add(user);
+                        this.user = user;
                         out.println("Success");
                         System.out.println("User registered: " + username);
                     } else if (message.startsWith(("/login"))) {
                         // Extract the username and password
-                        String[] parts = message.split(" ", 3);
+                        String[] parts = message.split(" ", 4);
                         String username = parts[1];
                         String password = parts[2];
+                        String publicKey = parts[3];
 
-                        // Check if the user is in the database
+                        if (!db.verifyPassword(username, password)) {
+                            out.println("Invalid");
+                            continue;
+                        }
 
-                        // after success
+                        if (connectedUsers.stream().anyMatch(u -> u.username.equals(username))) {
+                            out.println("User already logged in.");
+                            continue;
+                        }
+
                         // Add the user to the connected users map
-                        connectedUsers.put(username, socket.getInetAddress().getHostAddress());
-                        socket.getOutputStream().write("Success".getBytes());
+                        User user = new User(username, socket, publicKey);
+                        connectedUsers.add(user);
+                        this.user = user;
+                        out.println("Success");
                         System.out.println("User logged in: " + username);
                     } else if (message.startsWith("/connect")) {
                         // Extract the recipient
                         String[] parts = message.split(" ", 2);
                         String recipient = parts[1];
 
-                        if (Objects.equals(connectedUsers.get(recipient), socket.getInetAddress().getHostAddress())) {
-                            out.println("Error: Cannot connect to yourself");
+                        // Check if the recipient is the user
+                        if (recipient.equals(user.username)) {
+                            out.println("User not found.");
+                            System.out.println("Same user");
+                            continue;
                         }
 
-                        // Connect the user to the chosen recipient
-                    } else if (message.startsWith(("/message"))) {
+                        // list all users
+                        StringBuilder userList = new StringBuilder();
+                        for (User user : connectedUsers) {
+                            if (Objects.equals(user.username, this.user.username)) {
+                                continue;
+                            }
+                            userList.append(user.username).append("\n");
+                        }
+                        System.out.println(userList.toString());
 
+                        User recipientUser = connectedUsers.stream()
+                                .filter(u -> u.username.equals(recipient))
+                                .findFirst()
+                                .orElse(null);
+                        if (recipientUser == null) {
+                            System.out.println("User not found.");
+                            out.println("User not found.");
+                        } else {
+                            user.setConnectedUser(recipientUser);
+                            out.println("Found");
+                            System.out.println(user.username + " connected to " + recipient);
+                        }
+                    } else if (message.startsWith(("/message"))) {
+                        // Extract the message
+                        String[] parts = message.split(" ", 2);
+                        String messageContent = parts[1];
+
+                        // Send the message to the recipient
+                        PrintWriter recipientOut = new PrintWriter(user.connectedUser.socket.getOutputStream(), true);
+                        recipientOut.println(messageContent);
                     } else if (message.startsWith("/list")) {
                         // Send the list of connected users to the client
                         StringBuilder userList = new StringBuilder();
-                        for (String username : connectedUsers.keySet()) {
-                            userList.append(username).append("\n");
+                        for (User user : connectedUsers) {
+                            if (Objects.equals(user.username, this.user.username)) {
+                                continue;
+                            }
+                            userList.append(user.username).append("\n");
                         }
                         out.println(userList.toString());
                     } else {
@@ -100,8 +164,9 @@ public class Server {
                     }
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.error("Client exception", e);
             }
         }
+
     }
 }

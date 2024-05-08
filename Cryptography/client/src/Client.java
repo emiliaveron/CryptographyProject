@@ -3,10 +3,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Client {
+    private static final Logger logger = LoggerFactory.getLogger(Client.class);
     private static final String SERVER_ADDRESS = "localhost";
     private static final int SERVER_PORT = 8000;
+    private static final RSA rsa = new RSA();
 
     public static void main(String[] args) {
         try {
@@ -46,35 +50,45 @@ public class Client {
 
             out.println("/connect " + recipient);
             String serverResponse = in.readLine();
-            while (!serverResponse.equals("Success")) {
+            while (!serverResponse.equals("Found")) {
                 System.out.println("User not found. Choose the user you want to chat with:");
                 recipient = userInput.readLine();
                 out.println("/connect " + recipient);
                 serverResponse = in.readLine();
             }
-
+            System.out.println("Waiting for " + recipient + " to connect.");
+            serverResponse = in.readLine();
+            if (!serverResponse.startsWith("Success")) {
+                return;
+            }
             System.out.println("Connected to " + recipient + ". Start chatting!");
 
+            int encryptedShift = Integer.parseInt(serverResponse.split(" ")[1]);
+            int shift = RSA.decrypt(encryptedShift, rsa.privateKey);
+
             // Start a thread to handle messages from the server
-            Thread messageThread = new Thread(new MessageHandler(socket));
+            Thread messageThread = new Thread(new MessageHandler(socket, shift));
             messageThread.start();
 
             // Read user input and send messages to the server
+            CaesarCipher caesarCipher = new CaesarCipher(shift);
             String message;
             while ((message = userInput.readLine()) != null) {
-                out.println(message);
+                String encryptedMessage = caesarCipher.encrypt(message);
+                out.println(encryptedMessage);
             }
-
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Error in client", e);
         }
     }
 
     private static class MessageHandler implements Runnable {
-        private Socket socket;
+        private final Socket socket;
+        private final int shift;
 
-        public MessageHandler(Socket socket) {
+        public MessageHandler(Socket socket, int shift) {
             this.socket = socket;
+            this.shift = shift;
         }
 
         @Override
@@ -83,12 +97,14 @@ public class Client {
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
                 String message;
+                CaesarCipher caesarCipher = new CaesarCipher(shift);
                 while ((message = in.readLine()) != null) {
-                    System.out.println(message);
+                    String decryptedMessage = caesarCipher.decrypt(message);
+                    System.out.println(decryptedMessage);
                 }
 
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.error("Error in message handler", e);
             }
         }
     }
@@ -116,13 +132,13 @@ public class Client {
     private static boolean handleRegistration(BufferedReader userInput, PrintWriter out, BufferedReader in) throws IOException {
         String username = readUsername(userInput);
         String password = readPassword(userInput);
-        out.println("/register " + username + " " + password);
+        out.println("/register " + username + " " + password + " " + rsa.publicKey.toString());
         String serverResponse = in.readLine();
         System.out.println(serverResponse);
         while (serverResponse.equals("Username already exists")) {
             System.out.println("Username already exists. Enter a different username:");
             username = readUsername(userInput);
-            out.println("/register " + username + " " + password);
+            out.println("/register " + username + " " + password + " " + rsa.publicKey.toString());
             serverResponse = in.readLine();
         }
 
@@ -132,14 +148,14 @@ public class Client {
     private static boolean handleLogin(BufferedReader userInput, PrintWriter out, BufferedReader in) throws IOException {
         String username = readUsername(userInput);
         String password = readPassword(userInput);
-        out.println("/login " + username + " " + password);
+        out.println("/login " + username + " " + password + " " + rsa.publicKey.toString());
         String serverResponse = in.readLine();
         while (serverResponse.equals("Invalid username or password")) {
             System.out.println("Invalid username or password. Enter an username:");
             username = readUsername(userInput);
             System.out.println("Enter a password:");
             password = readPassword(userInput);
-            out.println("/login " + username + " " + password);
+            out.println("/login " + username + " " + password + " " + rsa.publicKey.toString());
             serverResponse = in.readLine();
         }
 
