@@ -158,6 +158,15 @@ public class Server {
                 }
             } catch (IOException e) {
                 logger.error("Client exception", e);
+            } finally {
+                try {
+                    socket.close();
+                    connectedUsers.remove(user);
+                    PrintWriter out = new PrintWriter(user.connectedUser.socket.getOutputStream(), true);
+                    out.println("Close");
+                } catch (IOException e) {
+                    logger.error("Error closing socket", e);
+                }
             }
         }
 

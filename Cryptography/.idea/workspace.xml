@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server.java" afterDir="false" />
     </list>
     <list id="4d5dbad0-c06f-41fc-8e6e-76f975254298" name="Changes by Ayan" comment="" />
@@ -44,7 +42,7 @@
     "Application.Client.executor": "Run",
     "Application.DatabaseConstructor.executor": "Run",
     "Application.RSA.executor": "Run",
-    "Application.Server.executor": "Debug",
+    "Application.Server.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -77,7 +75,7 @@
       <recent name="C:\Users\Admin\Documents\GitHub\CryptographyProject\Cryptography\Encryption\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Server">
+  <component name="RunManager" selected="Application.Client 2">
     <configuration name="Client 1" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -152,7 +150,7 @@
       <workItem from="1715023509441" duration="117000" />
       <workItem from="1715064901989" duration="27778000" />
       <workItem from="1715187946990" duration="6767000" />
-      <workItem from="1715232098309" duration="385000" />
+      <workItem from="1715232098309" duration="1578000" />
     </task>
     <servers />
   </component>

@@ -109,6 +109,9 @@ public class Client {
                     String message;
                     CaesarCipher caesarCipher = new CaesarCipher(shift);
                     while ((message = in.readLine()) != null) {
+                        if (message.equals("Close")) {
+                            break;
+                        }
                         String decryptedMessage = caesarCipher.decrypt(message);
                         System.out.println(decryptedMessage);
                     }
