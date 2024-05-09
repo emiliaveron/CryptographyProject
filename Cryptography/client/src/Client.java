@@ -33,39 +33,44 @@ public class Client {
 
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            boolean success;
-            if (choice.equals("1")) {
-                success = handleRegistration(userInput, out, in);
-            } else {
-                success = handleLogin(userInput, out, in);
-            }
-
-            if (!success) {
-                System.out.println("Failed to register or login. Exiting...");
-                return;
+            boolean success = false;
+            while (!success) {
+                if (choice.equals("1")) {
+                    success = handleRegistration(userInput, out, in);
+                } else {
+                    success = handleLogin(userInput, out, in);
+                }
+                if (!success) {
+                    System.out.println("Failed to register or login. Trying again...");
+                }
             }
 
             System.out.println("Successfully logged in. Choose the user you want to chat with from the list:");
-            out.println("/list");
-            List<String> userLines = new ArrayList<>();
-            String line;
-            while ((line = in.readLine()) != null && !line.equals("END")) {
-                userLines.add(line);
-            }
 
-            for (String userLine : userLines) {
-                System.out.println(userLine);
-            }
-            String recipient = userInput.readLine();
+            String recipient;
+            String serverResponse;
 
-            out.println("/connect " + recipient);
-            String serverResponse = in.readLine();
-            while (!serverResponse.equals("Found")) {
-                System.out.println("User not found. Choose the user you want to chat with:");
+            while (true) {
+                out.println("/list");
+                List<String> userLines = new ArrayList<>();
+                String line;
+                while ((line = in.readLine()) != null && !line.equals("END")) {
+                    userLines.add(line);
+                }
+
+                for (String userLine : userLines) {
+                    System.out.println(userLine);
+                }
                 recipient = userInput.readLine();
+
                 out.println("/connect " + recipient);
                 serverResponse = in.readLine();
+                if (serverResponse.equals("Found")) {
+                    break;
+                }
+                System.out.println("User not found. Choose the user you want to chat with:");
             }
+
             System.out.println("Waiting for " + recipient + " to connect.");
             serverResponse = in.readLine();
             if (!serverResponse.startsWith("Success")) {
@@ -94,32 +99,25 @@ public class Client {
         }
     }
 
-    private static class MessageHandler implements Runnable {
-        private final Socket socket;
-        private final int shift;
-
-        public MessageHandler(Socket socket, int shift) {
-            this.socket = socket;
-            this.shift = shift;
-        }
+    private record MessageHandler(Socket socket, int shift) implements Runnable {
 
         @Override
-        public void run() {
-            try {
-                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            public void run() {
+                try {
+                    BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-                String message;
-                CaesarCipher caesarCipher = new CaesarCipher(shift);
-                while ((message = in.readLine()) != null) {
-                    String decryptedMessage = caesarCipher.decrypt(message);
-                    System.out.println(decryptedMessage);
+                    String message;
+                    CaesarCipher caesarCipher = new CaesarCipher(shift);
+                    while ((message = in.readLine()) != null) {
+                        String decryptedMessage = caesarCipher.decrypt(message);
+                        System.out.println(decryptedMessage);
+                    }
+
+                } catch (IOException e) {
+                    logger.error("Error in message handler", e);
                 }
-
-            } catch (IOException e) {
-                logger.error("Error in message handler", e);
             }
         }
-    }
 
     private static String readUsername(BufferedReader userInput) throws IOException {
         System.out.println("Enter a username:");
@@ -150,7 +148,7 @@ public class Client {
         while (serverResponse.equals("Username already exists")) {
             System.out.println("Username already exists. Enter a different username:");
             username = readUsername(userInput);
-            out.println("/register " + username + " " + password + " " + rsa.publicKey.toString());
+            out.println("/register " + username + " " + password + " " + rsa.publicKey);
             serverResponse = in.readLine();
         }
 
@@ -167,7 +165,7 @@ public class Client {
             username = readUsername(userInput);
             System.out.println("Enter a password:");
             password = readPassword(userInput);
-            out.println("/login " + username + " " + password + " " + rsa.publicKey.toString());
+            out.println("/login " + username + " " + password + " " + rsa.publicKey);
             serverResponse = in.readLine();
         }
 

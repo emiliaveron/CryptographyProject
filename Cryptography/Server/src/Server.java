@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 public class Server {
     private static final Logger logger = LoggerFactory.getLogger(Server.class);
     private static final int PORT = 8000;
-    private static final Vector<User> connectedUsers = new Vector<User>();
+    private static final Vector<User> connectedUsers = new Vector<>();
     private static final DatabaseHandler db = new DatabaseHandler("users.db");
 
     public static void main(String[] args) {
@@ -71,7 +71,7 @@ public class Server {
                         String publicKey = parts[3];
 
                          if (db.userExists(username)) {
-                            out.println("User already exists.");
+                            out.println("Invalid");
                             continue;
                         }
 
@@ -113,8 +113,7 @@ public class Server {
 
                         // Check if the recipient is the user
                         if (recipient.equals(user.username)) {
-                            out.println("User not found.");
-                            System.out.println("Same user");
+                            out.println("Invalid");
                             continue;
                         }
 
@@ -123,12 +122,10 @@ public class Server {
                                 .findFirst()
                                 .orElse(null);
                         if (recipientUser == null) {
-                            System.out.println("User not found.");
-                            out.println("User not found.");
+                            out.println("Invalid");
                         } else {
                             boolean ready = user.setConnectedUser(recipientUser);
                             out.println("Found");
-                            System.out.println(user.username + " connected to " + recipient);
                             if (ready) {
                                 PrintWriter recipientOut = new PrintWriter(recipientUser.socket.getOutputStream(), true);
                                 Random random = new Random();

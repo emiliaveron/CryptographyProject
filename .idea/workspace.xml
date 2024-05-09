@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1114a8e8-fdb2-4f7d-b30f-34ae973d26d2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/CryptographyProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CryptographyProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cryptography/client/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptography/client/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cryptography/server/server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptography/Server/server.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cryptography/server/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptography/Server/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cryptography/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Cryptography/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +15,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -41,8 +36,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "server",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Pavel/Documents/GitHub/CryptographyProject",
+    "last_opened_file_path": "C:/Users/Admin/Documents/GitHub/CryptographyProject/Cryptography",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -57,7 +53,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -71,6 +68,7 @@
       <updated>1715023471188</updated>
       <workItem from="1715023471229" duration="35000" />
       <workItem from="1715023921590" duration="1100000" />
+      <workItem from="1715232026746" duration="68000" />
     </task>
     <servers />
   </component>

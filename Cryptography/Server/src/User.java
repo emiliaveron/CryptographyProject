@@ -1,5 +1,4 @@
 import java.net.Socket;
-import java.util.List;
 
 public class User {
     public String username;

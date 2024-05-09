@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9e3b4cc-2130-41ab-a5e7-45a1919a4bb8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/User.java" afterDir="false" />
     </list>
     <list id="4d5dbad0-c06f-41fc-8e6e-76f975254298" name="Changes by Ayan" comment="" />
     <list id="182d66d5-0a39-4af4-8939-8fe85e629547" name="Changes by emiliaveron" comment="" />
@@ -44,7 +44,7 @@
     "Application.Client.executor": "Run",
     "Application.DatabaseConstructor.executor": "Run",
     "Application.RSA.executor": "Run",
-    "Application.Server.executor": "Run",
+    "Application.Server.executor": "Debug",
     "Downloaded.Files.Path.Enabled": "false",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -54,7 +54,7 @@
     "git-widget-placeholder": "server",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Admin/Documents/GitHub/CryptographyProject/Cryptography/drivers/sqlite-jdbc-3.45.3.0.jar",
+    "last_opened_file_path": "C:/Users/Admin/Documents/GitHub/CryptographyProject/Cryptography",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -151,7 +151,8 @@
       <updated>1715023508366</updated>
       <workItem from="1715023509441" duration="117000" />
       <workItem from="1715064901989" duration="27778000" />
-      <workItem from="1715187946990" duration="5894000" />
+      <workItem from="1715187946990" duration="6767000" />
+      <workItem from="1715232098309" duration="385000" />
     </task>
     <servers />
   </component>
