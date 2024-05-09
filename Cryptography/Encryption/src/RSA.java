@@ -5,34 +5,31 @@ import java.util.Random;
 public class RSA {
     public final List<Integer> publicKey;
     public final List<Integer> privateKey;
+    public static final int limitNumPrimes = 100;
 
     RSA(){
-        List<Integer> primes = generatePrimes(10000);
-        int p = primes.get(getRandomIndex(primes.size()));
-        int q = primes.get(getRandomIndex(primes.size()));
+        List<Integer> primes = generatePrimes(limitNumPrimes);
+        primes.remove(0); primes.remove(0);
 
-        this.publicKey = generateKeys(p, q).get(0);
-        this.privateKey = generateKeys(p, q).get(1);
+        int i = new Random().nextInt(primes.size());
+        int p = primes.get(i);
+        primes.remove(i);
+        int q = primes.get(new Random().nextInt(primes.size()));
+
+        List<List<Integer>> keys = generateKeys(p, q);
+
+        this.publicKey = keys.get(0);
+        this.privateKey = keys.get(1);
     }
 
-    private int getRandomIndex(int max) {
-        Random r = new Random();
-        return r.nextInt(max);
-    }
 
     public static List<Integer> generatePrimes(int limit) {
         List<Integer> primes = new ArrayList<>();
-        for (int i = 2; i < limit; i++) {
+        
+        for (int i = 2; i <= limit; i++) {
             boolean isPrime = true;
-            for (int j = 2; j <= Math.sqrt(i); j++) {
-                if (i % j == 0) {
-                    isPrime = false;
-                    break;
-                }
-            }
-            if (isPrime) {
-                primes.add(i);
-            }
+            for (int j : primes) if (i % j == 0) isPrime = false;
+            if (isPrime) primes.add(i);
         }
         return primes;
     }
@@ -40,10 +37,18 @@ public class RSA {
     public static List<List<Integer>> generateKeys(int p, int q) {
         int n = p * q;
         int phi = (p-1) * (q-1);
+        if (phi == 100 || phi <= 2){
+            generatePrimes(limitNumPrimes);
+        }
+
+        System.out.println("Generating keys with p = " + p + " and q = " + q);
+        System.out.println("n = " + n);
+        System.out.println("phi = " + phi);
 
         int e = 2;
-        while (true){
+        while (e < phi){
             if (gcd(e,phi) == 1){
+                System.out.println("Found e = " + e);
                 break;
             }
             e += 1;
@@ -52,7 +57,10 @@ public class RSA {
         int d = 2;
         while (true){
             if ((d*e)%phi == 1){
-                break;
+                if (d*e > n){
+                    System.out.println("Found d = " + d);
+                    break;
+                }
             }
             d += 1;
         }
@@ -68,6 +76,10 @@ public class RSA {
         List<List<Integer>> keys = new ArrayList<>();
         keys.add(public_key);
         keys.add(private_key);
+
+        System.out.println("Generated keys: ");
+        System.out.println(keys.get(0).toString());
+        System.out.println(keys.get(1).toString());
 
         return keys;
     }
